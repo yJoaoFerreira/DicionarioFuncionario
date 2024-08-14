@@ -8,12 +8,12 @@ function criar(id, nome){
     }
     
     funcionarios[id] = nome;
-    return `Funcionário "${nome}" adicionado com sucesso!`;
+    return `Funcionário ${nome} adicionado com sucesso!`;
 }
 
 function buscar(id){
     if (funcionarios[id]){
-        return `Funcionário encontrado: ID: "${id}", Nome: "${funcionarios[id]}"`;
+        return `Funcionário encontrado: ID: ${id}, Nome: ${funcionarios[id]}`;
     }else{
         return "Funcionário não foi encontrado.";
     }
@@ -22,7 +22,7 @@ function buscar(id){
 function editar(id, novoNome){
     if (funcionarios[id]){
         funcionarios[id] = novoNome;
-        return `Funcionário do ID: "${id}" foi editado com sucesso! Novo nome: "${novoNome}"`;
+        return `Funcionário do ID: ${id} foi editado com sucesso! Seu novo nome é: ${novoNome}`;
     }else{
         return "Funcionário não foi encontrado.";
     }
@@ -31,7 +31,7 @@ function editar(id, novoNome){
 function apagar(id){
     if (funcionarios[id]){
         delete funcionarios[id];
-        return `Funcionário do ID: "${id}" foi apagado com sucesso!`;
+        return `Funcionário do ID: ${id} foi apagado com sucesso!`;
     }else{
         return "Funcionário não foi encontrado.";
     }
