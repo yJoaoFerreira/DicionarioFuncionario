@@ -1,3 +1,5 @@
+// Observação: Necessário utilizar o browser para compilar.
+
 let funcionarios = {};
 
 function criar(id, nome) {
