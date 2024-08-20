@@ -1,7 +1,6 @@
 let funcionarios = {};
 
-// Função para criar/adicionar um novo funcionário
-function criar(id, nome, email, senha, foto) {
+function criar(id, nome, email, senha, foto, cargo) {
     if (funcionarios[id]) {
         return "ID já existente. Funcionário não pode ser adicionado.";
     }
@@ -10,7 +9,8 @@ function criar(id, nome, email, senha, foto) {
         nome: nome,
         email: email,
         senha: senha,
-        foto: foto
+        foto: foto,
+        cargo: cargo
     };
     
     return `Funcionário ${nome} adicionado com sucesso!`;
@@ -19,20 +19,21 @@ function criar(id, nome, email, senha, foto) {
 function buscar(id) {
     if (funcionarios[id]) {
         let funcionario = funcionarios[id];
-        return `Funcionário encontrado: ID: ${id}, Nome: ${funcionario.nome}, Email: ${funcionario.email}`;
+        return `Funcionário encontrado: ID: ${id}, Nome: ${funcionario.nome}, Email: ${funcionario.email}, Cargo: ${funcionario.cargo}`;
     } else {
         return "Funcionário não foi encontrado.";
     }
 }
 
-function editar(id, novoNome, novoEmail, novaSenha, novaFoto) {
+function editar(id, novoNome, novoEmail, novaSenha, novaFoto, novoCargo) {
     if (funcionarios[id]) {
         funcionarios[id].nome = novoNome || funcionarios[id].nome;
         funcionarios[id].email = novoEmail || funcionarios[id].email;
         funcionarios[id].senha = novaSenha || funcionarios[id].senha;
         funcionarios[id].foto = novaFoto || funcionarios[id].foto;
+        funcionarios[id].cargo = novoCargo || funcionarios[id].cargo;
         
-        return `Funcionário do ID: ${id} foi editado com sucesso! Suas novas informações são: Nome: ${funcionarios[id].nome}, Email: ${funcionarios[id].email}`;
+        return `Funcionário do ID: ${id} foi editado com sucesso! Suas novas informações são: Nome: ${funcionarios[id].nome}, Email: ${funcionarios[id].email}, Cargo: ${funcionarios[id].cargo}`;
     } else {
         return "Funcionário não foi encontrado.";
     }
@@ -52,7 +53,6 @@ function menu() {
     let resultado = "";
 
     do {
-        // Exibe o menu de opções e solicita ao usuário que escolha uma opção
         opcao = prompt(
             "Escolha uma opção:\n" +
             "1 - Adicionar funcionário\n" +
@@ -70,7 +70,8 @@ function menu() {
                 let criarEmail = prompt("Digite o email do funcionário:");
                 let criarSenha = prompt("Digite a senha do funcionário:");
                 let criarFoto = prompt("Digite o caminho da foto do funcionário:");
-                resultado = criar(criarId, criarNome, criarEmail, criarSenha, criarFoto);
+                let criarCargo = prompt("Digite o cargo do funcionário:");
+                resultado = criar(criarId, criarNome, criarEmail, criarSenha, criarFoto, criarCargo);
                 break;
                 
             case '2':
@@ -84,7 +85,8 @@ function menu() {
                 let novoEmail = prompt("Digite o novo email do funcionário (ou deixe em branco para não alterar):");
                 let novaSenha = prompt("Digite a nova senha do funcionário (ou deixe em branco para não alterar):");
                 let novaFoto = prompt("Digite o novo caminho da foto do funcionário (ou deixe em branco para não alterar):");
-                resultado = editar(editarId, novoNome, novoEmail, novaSenha, novaFoto);
+                let novoCargo = prompt("Digite o novo cargo do funcionário (ou deixe em branco para não alterar):");
+                resultado = editar(editarId, novoNome, novoEmail, novaSenha, novaFoto, novoCargo);
                 break;
                 
             case '4':
